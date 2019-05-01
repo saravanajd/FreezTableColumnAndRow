@@ -15,16 +15,15 @@ const freezRow = (element, lastColumnIndex) => {
         td.forEach((x, i) => {
             x.style.position = 'sticky';
             x.style.position = '-webkit-sticky';
-            x.style.background = '#fafafa';
+            x.style.background = '#eaeaea';
             x.style.minWidth = '100px';
             x.style.maxWidth = '100px';
             x.style.width = '100px';
             x.style.overflow = 'hidden';
             x.style.textOverflow = 'ellipsis';
-           // x.style.border = '0';
             x.style.left = `${i * 100}px`;
         });
     });
 }
 
-freezRow('table',3);
+freezRow('table', 3);

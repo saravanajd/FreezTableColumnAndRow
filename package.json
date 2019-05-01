@@ -1,0 +1,28 @@
+{
+  "name": "fixtable",
+  "version": "1.0.0",
+  "description": "A simple js plugin for fix table columns and rows",
+  "main": "fixtable.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "parcel index.html",
+    "prod": "parcel build index.html"
+  },
+  "keywords": [
+    "talbe",
+    "fixed",
+    "table",
+    "freez",
+    "table",
+    "fixed",
+    "column",
+    "fixed",
+    "row",
+    "fixed",
+    "column",
+    "and",
+    "row"
+  ],
+  "author": "saravanan",
+  "license": "ISC"
+}

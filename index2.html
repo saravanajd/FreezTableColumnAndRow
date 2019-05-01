@@ -72,8 +72,7 @@
     </div>
 
     <!-- <script src="fixtable.js"></script> -->
-    <link rel="stylesheet" href="FreezeTable.css" />
-    <script src="FreezeTable.js"></script>
+    <script src="fixtable.js"></script>
     <script>
       const tblContainer = document.getElementById(
         "fixed-table-container-demo"
@@ -81,10 +80,9 @@
       tblContainer.style.overflowY = "auto";
       tblContainer.style.height = "100vh";
       tblContainer.style.padding = "0";
+      tblContainer.style.position = "relative";
 
-      var fixedTable = fixTable(
-        document.getElementById("fixed-table-container-demo")
-      );
+      fixTable("#fixed-table-container-demo");
     </script>
   </body>
 </html>
