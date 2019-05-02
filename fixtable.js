@@ -145,6 +145,24 @@ const fixTable = element => {
   // Update table cell dimensions on resize
   window.addEventListener("resize", resizeThrottler, false);
 
+  container.addEventListener("scroll", function() {
+    thead.style.transform = `translate3d(0,${this.scrollTop}px,0)`;
+    const transform = `translate3d(${this.scrollLeft}px,0,0)`;
+    Array.from(thead.querySelectorAll("th"))
+      .slice(0, options.numColumnsToFreez)
+      .forEach(th => {
+        th.style.transform = transform;
+      });
+    tbody.querySelectorAll("tr").forEach(tr => {
+      Array.from(tr.querySelectorAll("td"))
+        .slice(0, options.numColumnsToFreez)
+        .forEach(td => {
+          td.style.transform = transform;
+          td.style.background = "#989898";
+        });
+    });
+  });
+
   // Initialize table layout
   resetTableLayout();
 
