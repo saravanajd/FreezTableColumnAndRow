@@ -1,19 +1,25 @@
 const fixTable = element => {
+  // Options for fix table
   const options = {
     freezHeader: true,
     freezColumn: true,
     numColumnsToFreez: 3
   };
 
+  // get element and add style
   const container = document.querySelector(element);
+  container.style.position = "relative";
+
   const thead = container.querySelector("thead");
   const tbody = container.querySelector("tbody");
 
+  // main function to calculate table style
   const resetTableLayout = () => {
     const ths = Array.from(thead.querySelectorAll("th"));
     const tbodyTrs = tbody.querySelectorAll("tr");
     const tds = tbody.querySelectorAll("td");
 
+    // Remove default styles
     tbody.setAttribute("style", "");
     thead.style.width = "";
     thead.style.position = "";
@@ -116,9 +122,13 @@ const fixTable = element => {
       );
       tr.querySelectorAll("td").forEach((td, j) => {
         td.style.width = `${thStyles[j].width}px`;
+        td.style.height = `${maxTdHeight}px`;
         if (j < options.numColumnsToFreez) {
-          td.style.position = "absolute";
           td.style.height = `${maxTdHeight + borderWidth}px`;
+          td.style.position = "absolute";
+          td.style.display = "flex";
+          td.style.jsutifyContent = "center";
+          td.style.alignItems = "center";
           td.style.left = `${getSumOfBoundingWidth(thStyles, 0, j)}px`;
         }
       });
@@ -132,19 +142,20 @@ const fixTable = element => {
     }, 0);
   };
 
-  let resizeTimeOut = null;
-  const resizeThrottler = () => {
-    if (!resizeTimeOut) {
-      resizeTimeOut = setTimeout(function() {
-        resizeTimeOut = null;
-        resetTableLayout();
-      }, 500);
-    }
-  };
+  // let resizeTimeOut = null;
+  // const resizeThrottler = () => {
+  //   if (!resizeTimeOut) {
+  //     resizeTimeOut = setTimeout(function() {
+  //       resizeTimeOut = null;
+  //       resetTableLayout();
+  //     }, 500);
+  //   }
+  // };
 
   // Update table cell dimensions on resize
-  window.addEventListener("resize", resizeThrottler, false);
+  // window.addEventListener("resize", resizeThrottler, false);
 
+  // Add scroll event for freeze table rows and column
   container.addEventListener("scroll", function() {
     thead.style.transform = `translate3d(0,${this.scrollTop}px,0)`;
     const transform = `translate3d(${this.scrollLeft}px,0,0)`;
@@ -158,7 +169,6 @@ const fixTable = element => {
         .slice(0, options.numColumnsToFreez)
         .forEach(td => {
           td.style.transform = transform;
-          td.style.background = "#989898";
         });
     });
   });

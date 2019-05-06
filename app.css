@@ -18,8 +18,8 @@ body {
     "Helvetica Neue", Arial, sans-serif;
   font-weight: 400;
   line-height: 1.5;
-  background: #000;
-  color: #fafafa;
+  background: #ffffff;
+  color: #707070;
 }
 
 .container {
@@ -27,7 +27,7 @@ body {
   width: 100%;
   margin: 0px auto;
   position: relative;
-  padding: 0 1rem;
+  padding: 1rem;
 }
 
 table {
@@ -40,8 +40,24 @@ td,
 th {
   border: 1px solid #ccc;
   padding: 8px 4px;
+  white-space: nowrap !important;
 }
 
 th {
-  background: #0a84a0;
+  background: #009fff;
+  color: #fafafa;
+}
+
+td {
+  color: #707070;
+  background: #ffffff;
+}
+
+.fixTable {
+  width: calc(60vw - 2rem);
+  height: calc(60vh - 2rem);
+  overflow: auto;
+  margin: 0px auto;
+  margin-top: 2rem;
+  border: 1px solid #eaeaea;
 }
